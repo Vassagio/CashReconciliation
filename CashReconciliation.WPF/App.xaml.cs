@@ -9,7 +9,8 @@ namespace CashReconciliation.WPF
 	{
 		protected override void RegisterTypes(IContainerRegistry containerRegistry)
 		{
-			containerRegistry.Register<ISomeService, SomeService>();
+			containerRegistry.Register<IDenominationService, DenominationService>();
+			containerRegistry.Register<IDenominaionMapper, DenominaionMapper>();
 		}
 
 		protected override IContainerExtension CreateContainerExtension() => new CoreDependencyExtension();

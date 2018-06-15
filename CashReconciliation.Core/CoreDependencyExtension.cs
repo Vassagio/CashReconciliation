@@ -1,4 +1,5 @@
 ﻿using CashReconciliation.Data;
+using CashReconciliation.Data.Services;
 using Prism.Unity.Ioc;
 
 namespace CashReconciliation.Core
@@ -7,7 +8,9 @@ namespace CashReconciliation.Core
 	{
 		public CoreDependencyExtension()
 		{
-			Register(typeof(ISomeRepository), typeof(SomeRepository));
+			Register(typeof(IDenominationRepository), typeof(DenominationRepository));				
+			Register(typeof(ISerializeService), typeof(SerializeService));		
+			Register(typeof(IDirectoryProxy), typeof(DirectoryProxy));					
 		}
 	}
 }

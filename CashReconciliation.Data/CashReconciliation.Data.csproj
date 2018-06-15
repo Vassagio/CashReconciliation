@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9DB684B0-538F-474C-9FA1-CF00BCE6A85F}</ProjectGuid>
+    <ProjectGuid>{615665DF-33CB-414A-B1FA-0A4B6CCDA85A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CashReconciliation.Data</RootNamespace>
@@ -40,24 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CashEntries.cs" />
-    <Compile Include="CashEntry.cs" />
-    <Compile Include="Denomination.cs" />
-    <Compile Include="Denominations.cs" />
+    <Compile Include="ISomeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reconciliation.cs" />
-    <Compile Include="ReconciliationRepository.cs" />
-    <Compile Include="SerializeService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CashReconciliation.Data.Implementation\CashReconciliation.Data.Implementation.csproj">
-      <Project>{b9fb5f64-5def-4e70-83f6-10107505cf16}</Project>
-      <Name>CashReconciliation.Data.Implementation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CashReconciliation.Implementation\CashReconciliation.Implementation.csproj">
-      <Project>{2DAA5E27-BFAB-4F05-9444-59A62AC6A86E}</Project>
-      <Name>CashReconciliation.Implementation</Name>
-    </ProjectReference>
+    <Compile Include="SomeRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

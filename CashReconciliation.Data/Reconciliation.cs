@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using CashReconciliation.Data.Implementation;
 
 namespace CashReconciliation.Data
 {

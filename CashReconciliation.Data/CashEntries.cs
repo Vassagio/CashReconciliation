@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using CashReconciliation.Data.Implementation;
 
 namespace CashReconciliation.Data
 {
 	[XmlRoot("CashEntries")]
-	public sealed class CashEntries : ICollection<CashEntry>
+	public sealed class CashEntries : ICollection<CashEntry>, ICashEntries
 	{
 		private readonly ISet<CashEntry> _items = new HashSet<CashEntry>();
 

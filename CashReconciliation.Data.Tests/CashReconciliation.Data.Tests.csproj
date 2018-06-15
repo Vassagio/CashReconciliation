@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B9FB5F64-5DEF-4E70-83F6-10107505CF16}</ProjectGuid>
+    <ProjectGuid>{B063D92C-BBAA-4B31-B8E8-4065C8FCD208}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CashReconciliation.Data.Implementation</RootNamespace>
-    <AssemblyName>CashReconciliation.Data.Implementation</AssemblyName>
+    <RootNamespace>CashReconciliation.Data.Tests</RootNamespace>
+    <AssemblyName>CashReconciliation.Data.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICashEntries.cs" />
-    <Compile Include="ICashEntry.cs" />
-    <Compile Include="IDenomination.cs" />
-    <Compile Include="IDenominations.cs" />
-    <Compile Include="IReconciliation.cs" />
-    <Compile Include="IReconciliationRepository.cs" />
-    <Compile Include="ISerializeService.cs" />
+    <Compile Include="ReconciliationRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit">
+      <Version>2.4.0-beta.1.build3958</Version>
+    </PackageReference>
+    <PackageReference Include="xunit.runner.visualstudio">
+      <Version>2.4.0-beta.1.build3958</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CashReconciliation.Data.Implementation.Mocks\CashReconciliation.Data.Implementation.Mocks.csproj">
+      <Project>{e6208ee4-2d10-4e80-bcee-63f2a37567da}</Project>
+      <Name>CashReconciliation.Data.Implementation.Mocks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CashReconciliation.Data.Implementation\CashReconciliation.Data.Implementation.csproj">
+      <Project>{B9FB5F64-5DEF-4E70-83F6-10107505CF16}</Project>
+      <Name>CashReconciliation.Data.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CashReconciliation.Data\CashReconciliation.Data.csproj">
+      <Project>{9db684b0-538f-474c-9fa1-cf00bce6a85f}</Project>
+      <Name>CashReconciliation.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CashReconciliation.Implementation.Mocks\CashReconciliation.Implementation.Mocks.csproj">
+      <Project>{7F3F4101-0352-47D6-B26F-CDDDC7084AD1}</Project>
+      <Name>CashReconciliation.Implementation.Mocks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CashReconciliation.Implementation\CashReconciliation.Implementation.csproj">
+      <Project>{2DAA5E27-BFAB-4F05-9444-59A62AC6A86E}</Project>
+      <Name>CashReconciliation.Implementation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,6 +11,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashReconciliation.Data.Imp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashReconciliation.Implementation", "CashReconciliation.Implementation\CashReconciliation.Implementation.csproj", "{2DAA5E27-BFAB-4F05-9444-59A62AC6A86E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CBC831DF-47C2-4F1C-BA93-3AE7A5771CDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashReconciliation.Data.Tests", "CashReconciliation.Data.Tests\CashReconciliation.Data.Tests.csproj", "{B063D92C-BBAA-4B31-B8E8-4065C8FCD208}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mocks", "Mocks", "{3EA0C067-0A89-4C72-8EA0-B8EA46835212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashReconciliation.Data.Implementation.Mocks", "CashReconciliation.Data.Implementation.Mocks\CashReconciliation.Data.Implementation.Mocks.csproj", "{E6208EE4-2D10-4E80-BCEE-63F2A37567DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashReconciliation.Implementation.Mocks", "CashReconciliation.Implementation.Mocks\CashReconciliation.Implementation.Mocks.csproj", "{7F3F4101-0352-47D6-B26F-CDDDC7084AD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +43,27 @@ Global
 		{2DAA5E27-BFAB-4F05-9444-59A62AC6A86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DAA5E27-BFAB-4F05-9444-59A62AC6A86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DAA5E27-BFAB-4F05-9444-59A62AC6A86E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B063D92C-BBAA-4B31-B8E8-4065C8FCD208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B063D92C-BBAA-4B31-B8E8-4065C8FCD208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B063D92C-BBAA-4B31-B8E8-4065C8FCD208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B063D92C-BBAA-4B31-B8E8-4065C8FCD208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6208EE4-2D10-4E80-BCEE-63F2A37567DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6208EE4-2D10-4E80-BCEE-63F2A37567DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6208EE4-2D10-4E80-BCEE-63F2A37567DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6208EE4-2D10-4E80-BCEE-63F2A37567DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F3F4101-0352-47D6-B26F-CDDDC7084AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3F4101-0352-47D6-B26F-CDDDC7084AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3F4101-0352-47D6-B26F-CDDDC7084AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3F4101-0352-47D6-B26F-CDDDC7084AD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B063D92C-BBAA-4B31-B8E8-4065C8FCD208} = {CBC831DF-47C2-4F1C-BA93-3AE7A5771CDE}
+		{3EA0C067-0A89-4C72-8EA0-B8EA46835212} = {CBC831DF-47C2-4F1C-BA93-3AE7A5771CDE}
+		{E6208EE4-2D10-4E80-BCEE-63F2A37567DA} = {3EA0C067-0A89-4C72-8EA0-B8EA46835212}
+		{7F3F4101-0352-47D6-B26F-CDDDC7084AD1} = {3EA0C067-0A89-4C72-8EA0-B8EA46835212}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D64D5C7-A923-4BBC-AE7B-2AEBBEA8B0FB}

@@ -4,6 +4,51 @@ using System.Xml.Serialization;
 
 namespace CashReconciliation.Data
 {
+	public sealed class CheckEntry : IEqualityComparer<CheckEntry>, IEquatable<CheckEntry>
+	{
+		[XmlElement]
+		public int CheckNumber { get; set; }
+
+		[XmlElement]
+		public decimal Amount { get; set; }
+
+		public CheckEntry() {}
+
+		public CheckEntry(int checkNumber, decimal amount)
+		{
+			CheckNumber = checkNumber > 0 ? checkNumber : throw new ArgumentException();
+			Amount = amount > 0 ? amount : throw new ArgumentException();
+		}
+
+		public bool Equals(CheckEntry x, CheckEntry y) =>
+			y != null && 
+			x != null && 
+			x.CheckNumber.Equals(y.CheckNumber);
+
+		public int GetHashCode(CheckEntry obj) => obj.CheckNumber.GetHashCode();
+
+		public bool Equals(CheckEntry other)
+		{
+			if (ReferenceEquals(null, other)) return false;
+			if (ReferenceEquals(this, other)) return true;
+
+			return CheckNumber.Equals(other.CheckNumber);
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (ReferenceEquals(null, obj)) return false;
+			if (ReferenceEquals(this, obj)) return true;
+
+			return obj is CheckEntry entry && Equals(entry);
+		}
+
+		public override int GetHashCode() => CheckNumber.GetHashCode();
+
+		public override string ToString() => $"{CheckNumber:0000000} - {Amount:C}";
+	}
+
+
 	public sealed class CashEntry: IEqualityComparer<CashEntry>, IEquatable<CashEntry>
 	{
 		[XmlElement]

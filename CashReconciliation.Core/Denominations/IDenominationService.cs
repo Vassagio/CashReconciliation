@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using CashReconciliation.Core.Models;
 
-namespace CashReconciliation.Core
+namespace CashReconciliation.Core.Denominations
 {
 	public interface IDenominationService
 	{

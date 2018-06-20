@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStartingCashRepository.cs" />
+    <Compile Include="StartingCashRepository.cs" />
     <Compile Include="Entities\CashEntry.cs" />
     <Compile Include="Entities\CheckEntry.cs" />
     <Compile Include="Entities\Denomination.cs" />

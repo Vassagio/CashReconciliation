@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CashReconciliation.Core.Models
+namespace CashReconciliation.Core.Denominations
 {
 	public class Denomination
 	{

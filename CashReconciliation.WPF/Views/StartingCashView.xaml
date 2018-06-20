@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="CashReconciliation.WPF.Views.StartingCashView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             mvvm:ViewModelLocator.AutoWireViewModel="true"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mvvm="http://prismlibrary.com/">
+    <UserControl.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>        
+        <ListView ItemsSource="{Binding StartingCash}">
+            <ListView.View>                
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Denomination.Description}"/>
+                    <GridViewColumn Header="Value">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Denomination.Value, StringFormat=C}" TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>                        
+                    </GridViewColumn>
+                    <GridViewColumn Header="Quantity">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>                        
+                    </GridViewColumn>
+                    <GridViewColumn Header="Total">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Total, StringFormat=C}" TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>                        
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</UserControl>

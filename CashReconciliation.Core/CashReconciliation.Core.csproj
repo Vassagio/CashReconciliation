@@ -40,13 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashEntries\CashEntryService.cs" />
+    <Compile Include="CashEntries\ICashEntryService.cs" />
     <Compile Include="CoreDependencyExtension.cs" />
-    <Compile Include="DenominaionMapper.cs" />
-    <Compile Include="IDenominaionMapper.cs" />
-    <Compile Include="IDenominationService.cs" />
-    <Compile Include="Models\Denomination.cs" />
+    <Compile Include="Denominations\IDenominationService.cs" />
+    <Compile Include="CashEntries\CashEntry.cs" />
+    <Compile Include="Denominations\Denomination.cs" />
+    <Compile Include="MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DenominationService.cs" />
+    <Compile Include="Denominations\DenominationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CashReconciliation.Data\CashReconciliation.Data.csproj">
@@ -55,6 +57,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>7.0.1</Version>
+    </PackageReference>
     <PackageReference Include="MBI.Utilities.Optional">
       <Version>1.0.0.1</Version>
     </PackageReference>

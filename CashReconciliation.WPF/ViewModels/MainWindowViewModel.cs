@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using CashReconciliation.Core;
-using CashReconciliation.Core.Models;
+using CashReconciliation.Core.Denominations;
 using Prism.Commands;
 using Prism.Mvvm;
 

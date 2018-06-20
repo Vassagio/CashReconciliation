@@ -57,7 +57,7 @@ namespace CashReconciliation.Data
 
 			RemoveItem(cashEntry);
 			Save();
-		}
+		}		
 
 		public CashEntry Update(CashEntry cashEntry)
 		{

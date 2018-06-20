@@ -8,6 +8,6 @@ namespace CashReconciliation.Data
 		IEnumerable<CashEntry> Get();
 		void Insert(CashEntry cashEntry);
 		CashEntry Update(CashEntry cashEntry);
-		void Delete(CashEntry cashEntry);
+		void Delete(CashEntry cashEntry);		
 	}
 }

@@ -2,14 +2,18 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              mvvm:ViewModelLocator.AutoWireViewModel="true"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mvvm="http://prismlibrary.com/">
+             xmlns:mvvm="http://prismlibrary.com/" Background="White">
     <UserControl.Resources>
         <Style TargetType="ListViewItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
     </UserControl.Resources>
-    <DockPanel>        
-        <ListView ItemsSource="{Binding StartingCash}">
+    <DockPanel> 
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Background="White">
+            <TextBlock Margin="5,0"  Text ="Total:" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Text ="{Binding Total, StringFormat=C, FallbackValue=0.00}" FontSize="20"/>
+        </StackPanel>
+        <ListView ItemsSource="{Binding StartingCash}" BorderThickness="0">
             <ListView.View>                
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Denomination.Description}"/>
@@ -30,7 +34,7 @@
                     <GridViewColumn Header="Total">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Total, StringFormat=C}" TextAlignment="Right"/>
+                                <TextBlock Text="{Binding Total, StringFormat=C}" TextAlignment="Right" FontWeight="Bold"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>                        
                     </GridViewColumn>

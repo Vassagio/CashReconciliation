@@ -22,6 +22,8 @@ namespace CashReconciliation.Core.CashEntries
 		                                                  .Select(i => _mapper.Map<CashEntry>(i))
 		                                                  .OrderByDescending(i => i.Denomination.Value);
 
+		public decimal GetTotal() => Get().Sum(i => i.Total);
+
 		public void Add(CashEntry cashEntry)
 		{
 			if (cashEntry == null) throw new ArgumentNullException();

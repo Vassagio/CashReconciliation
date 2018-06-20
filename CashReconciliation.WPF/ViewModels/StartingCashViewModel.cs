@@ -15,20 +15,30 @@ namespace CashReconciliation.WPF.ViewModels
 
 		private IEnumerable<CashEntryViewModel> _startingCash;
 		public IEnumerable<CashEntryViewModel> StartingCash { get => _startingCash; set => SetProperty(ref _startingCash, value); }
+
+		private decimal _total;
+		public decimal Total { get => _total; set => SetProperty(ref _total, value); }
 		
 		public StartingCashViewModel(ICashEntryService service, IMapper mapper, IEventAggregator aggregator)
 		{
 			aggregator.GetEvent<CashEntryChanged>().Subscribe(Update);
 			_service = service;
 			_mapper = mapper;
+			Initialize();
+		}
+
+		private void Initialize()
+		{
+			StartingCash = _service.Get().Select(_mapper.Map<CashEntryViewModel>);
 			Refresh();
 		}
 
-		private void Refresh() => StartingCash = _service.Get().Select(_mapper.Map<CashEntryViewModel>);
+		private void Refresh() => Total = _service.GetTotal();
 
 		private void Update(CashEntryViewModel cashEntry)
-		{			
-			_service.Update(_mapper.Map<CashEntry>(cashEntry));	
+		{
+			_service.Update(_mapper.Map<CashEntry>(cashEntry));
+			Refresh();
 		}
 	}
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2740FB8D-7602-4449-802E-056A61CE9EC8}</ProjectGuid>
+    <ProjectGuid>{0E24A305-F57A-44AC-9337-089498744F64}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CashReconciliation.Core</RootNamespace>
@@ -40,7 +40,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashEntries\CashEntryService.cs" />
+    <Compile Include="CashEntries\ICashEntryService.cs" />
+    <Compile Include="CoreDependencyExtension.cs" />
+    <Compile Include="Denominations\IDenominationService.cs" />
+    <Compile Include="CashEntries\CashEntry.cs" />
+    <Compile Include="Denominations\Denomination.cs" />
+    <Compile Include="MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Denominations\DenominationService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CashReconciliation.Data\CashReconciliation.Data.csproj">
+      <Project>{615665df-33cb-414a-b1fa-0a4b6ccda85a}</Project>
+      <Name>CashReconciliation.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>7.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="MBI.Utilities.Optional">
+      <Version>1.0.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>7.1.0.123-pre</Version>
+    </PackageReference>
+    <PackageReference Include="Unity">
+      <Version>5.8.6</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

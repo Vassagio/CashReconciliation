@@ -1,35 +1,39 @@
-﻿using System.Collections.Generic;
-using CashReconciliation.Core;
-using CashReconciliation.Core.Denominations;
-using Prism.Commands;
+﻿using System.Collections.ObjectModel;
+using CashReconciliation.Core.Reconciliations;
+using CashReconciliation.WPF.EventAggregators;
+using CashReconciliation.WPF.Mappers;
+using Prism.Events;
 using Prism.Mvvm;
 
 namespace CashReconciliation.WPF.ViewModels
 {
 	public class MainWindowViewModel : BindableBase
 	{
-		private readonly IDenominationService _denominationService;
+		private readonly IReconciliationMapper _mapper;
+		private readonly IReconciliationService _service;
 
-		private IEnumerable<Denomination> _denominations;
-		public IEnumerable<Denomination> Denominations
+		private ObservableCollection<DocumentViewModelBase> _documents = new ObservableCollection<DocumentViewModelBase>();
+		public ObservableCollection<DocumentViewModelBase> Documents { get => _documents; set => SetProperty(ref _documents, value); }
+
+		public MainWindowViewModel(IEventAggregator aggregator, IReconciliationService service, IReconciliationMapper mapper)
 		{
-			get => _denominations;
-			set => SetProperty(ref _denominations, value);
+			_service = service;
+			_mapper = mapper;
+			aggregator.GetEvent<CompactReconciliationClicked>().Subscribe(OpenReconciliation);
+
+			var all = new ReconciliationsViewModel(service, mapper);
+			Documents.Add(all);
 		}
 
-		public DelegateCommand AddDenominationCommand => new DelegateCommand(AddDenomination);
-
-
-		public MainWindowViewModel(IDenominationService denominationService)
+		private void OpenReconciliation(CompactReconciliationViewModel reconciliation)
 		{
-			_denominationService = denominationService;
-			Denominations = _denominationService.Get();
-		}
-
-		private void AddDenomination()
-		{
-			_denominationService.Add(new Denomination("William", 100000));
-			Denominations = _denominationService.Get();
+			var result = _service.Get(reconciliation.ReconciledDate);
+			result.Handle(r =>
+			              {
+				              var rec = _mapper.Map(r);
+				              if (!Documents.Contains(rec))
+					              Documents.Add(rec);
+			              });
 		}
 	}
 }

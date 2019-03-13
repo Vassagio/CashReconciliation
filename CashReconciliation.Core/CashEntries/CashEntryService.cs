@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
+using CashReconciliation.Core.Mappers;
 using CashReconciliation.Data;
 using DTO = CashReconciliation.Data.Entities;
 
@@ -10,16 +10,16 @@ namespace CashReconciliation.Core.CashEntries
 	public class CashEntryService : ICashEntryService
 	{
 		private readonly IStartingCashRepository _repository;
-		private readonly IMapper _mapper;
+		private readonly ICashEntryMapper _mapper;
 
-		public CashEntryService(IStartingCashRepository repository, IMapper mapper)
+		public CashEntryService(IStartingCashRepository repository, ICashEntryMapper mapper)
 		{
 			_repository = repository;
 			_mapper = mapper;
 		}
 
 		public IEnumerable<CashEntry> Get() => _repository.Get()
-		                                                  .Select(i => _mapper.Map<CashEntry>(i))
+		                                                  .Select(i => _mapper.Map(i))
 		                                                  .OrderByDescending(i => i.Denomination.Value);
 
 		public decimal GetTotal() => Get().Sum(i => i.Total);
@@ -28,22 +28,22 @@ namespace CashReconciliation.Core.CashEntries
 		{
 			if (cashEntry == null) throw new ArgumentNullException();
 
-			_repository.Insert(_mapper.Map<DTO.CashEntry>(cashEntry));
+			_repository.Insert(_mapper.Map(cashEntry));
 		}
 
 		public void Remove(CashEntry cashEntry)
 		{
 			if (cashEntry == null) throw new ArgumentNullException();
 
-			_repository.Delete(_mapper.Map<DTO.CashEntry>(cashEntry));
+			_repository.Delete(_mapper.Map(cashEntry));
 		}
 
 		public CashEntry Update(CashEntry cashEntry)
 		{
 			if (cashEntry == null) throw new ArgumentNullException();
 
-			var item = _repository.Update(_mapper.Map<DTO.CashEntry>(cashEntry));
-			return _mapper.Map<CashEntry>(item);
+			var item = _repository.Update(_mapper.Map(cashEntry));
+			return _mapper.Map(item);
 		}
 	}
 }

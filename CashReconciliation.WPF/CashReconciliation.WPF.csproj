@@ -54,13 +54,44 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MapperConfig.cs" />
+    <Compile Include="EventAggregators\CompactReconciliationClicked.cs" />
     <Compile Include="EventAggregators\CashEntryChanged.cs" />
+    <Compile Include="Mappers\CashEntryMapper.cs" />
+    <Compile Include="Mappers\DenominationMapper.cs" />
+    <Compile Include="Mappers\ICashEntryMapper.cs" />
+    <Compile Include="Mappers\IDenominationMapper.cs" />
+    <Compile Include="Mappers\IReconciliationMapper.cs" />
+    <Compile Include="Mappers\ReconciliationMapper.cs" />
+    <Compile Include="ViewModels\CashEntriesViewModel.cs" />
     <Compile Include="ViewModels\CashEntryViewModel.cs" />
+    <Compile Include="ViewModels\CompactReconciliationViewModel.cs" />
     <Compile Include="ViewModels\DenominationViewModel.cs" />
+    <Compile Include="ViewModels\ReconciliationsViewModel.cs" />
+    <Compile Include="ViewModels\ReconciliationViewModel.cs" />
+    <Compile Include="ViewModels\DocumentViewModelBase.cs" />
+    <Compile Include="Views\CashEntriesView.xaml.cs">
+      <DependentUpon>CashEntriesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompactReconciliationView.xaml.cs">
+      <DependentUpon>CompactReconciliationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReconciliationView.xaml.cs">
+      <DependentUpon>ReconciliationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReconciliationsView.xaml.cs">
+      <DependentUpon>ReconciliationsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartingCashView.xaml.cs">
       <DependentUpon>StartingCashView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\CashEntriesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CompactReconciliationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +106,14 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ReconciliationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReconciliationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StartingCashView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,9 +152,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AutoMapper">
-      <Version>7.0.1</Version>
-    </PackageReference>
     <PackageReference Include="Extended.Wpf.Toolkit">
       <Version>3.3.0</Version>
     </PackageReference>
@@ -128,6 +164,9 @@
     <PackageReference Include="Prism.Wpf">
       <Version>7.1.0.123-pre</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

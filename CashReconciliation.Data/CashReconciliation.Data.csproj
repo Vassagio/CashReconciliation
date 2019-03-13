@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IReconciliationRepository.cs" />
     <Compile Include="IStartingCashRepository.cs" />
+    <Compile Include="ReconciliationRepository.cs" />
     <Compile Include="StartingCashRepository.cs" />
     <Compile Include="Entities\CashEntry.cs" />
     <Compile Include="Entities\CheckEntry.cs" />

@@ -3,21 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mvvm="http://prismlibrary.com/"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
-        xmlns:views="clr-namespace:CashReconciliation.WPF.Views"
-        mvvm:ViewModelLocator.AutoWireViewModel="true"
+        xmlns:views="clr-namespace:CashReconciliation.WPF.Views"        
+        xmlns:viewModels="clr-namespace:CashReconciliation.WPF.ViewModels"
+        mvvm:ViewModelLocator.AutoWireViewModel="true"        
         Title="Cash Reconciliation">
-         
-        <xcad:DockingManager>
+             
+        <xcad:DockingManager DocumentsSource="{Binding Documents}">
+            <xcad:DockingManager.Resources>
+                <DataTemplate DataType="{x:Type viewModels:ReconciliationViewModel}">
+                    <views:ReconciliationView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:ReconciliationsViewModel}">
+                    <views:ReconciliationsView/>
+                </DataTemplate>
+            </xcad:DockingManager.Resources>
+            <xcad:DockingManager.DocumentHeaderTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Content.DisplayName}"  />
+                </DataTemplate>
+            </xcad:DockingManager.DocumentHeaderTemplate>
             <xcad:LayoutRoot>
                 <xcad:LayoutRoot.LeftSide>
                     <xcad:LayoutAnchorSide>
                         <xcad:LayoutAnchorGroup>
-                            <xcad:LayoutAnchorable Title="Starting Cash" ContentId="startingCash" CanClose="False" CanHide="False">
+                            <xcad:LayoutAnchorable Title="Starting Cash" ContentId="startingCash" CanClose="False" CanHide="True" AutoHideMinWidth="300">
                                 <views:StartingCashView />
                             </xcad:LayoutAnchorable>              
                         </xcad:LayoutAnchorGroup>
                     </xcad:LayoutAnchorSide>
                 </xcad:LayoutRoot.LeftSide>
-            </xcad:LayoutRoot>
-        </xcad:DockingManager>    
+                
+                <xcad:LayoutRoot.RootPanel>
+                    <xcad:LayoutPanel Orientation="Horizontal" >                          
+                        <xcad:LayoutDocumentPaneGroup>      
+                          <xcad:LayoutDocumentPane>                                
+                          </xcad:LayoutDocumentPane>                              
+                        </xcad:LayoutDocumentPaneGroup>
+                    </xcad:LayoutPanel>
+                </xcad:LayoutRoot.RootPanel>     
+            
+            </xcad:LayoutRoot>                        
+        </xcad:DockingManager>             
 </Window>
